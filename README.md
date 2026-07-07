@@ -24,8 +24,6 @@
   📒 Docker ❌
   
 
-🌱 Code branch: master
-
 🔐 IP Address : 192.168.1.1
 
 Username: root
