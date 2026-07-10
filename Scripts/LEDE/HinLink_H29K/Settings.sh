@@ -97,3 +97,42 @@ echo " DIY2 配置完成……"
 # Change LuCI title
 sed -i "s/OpenWrt/H29KLEDE-Bl4nc7OS/g" \
 package/base-files/files/etc/openwrt_release 2>/dev/null || true
+
+# ============================
+# Bl4nc7OS LED Default Config
+# ============================
+
+mkdir -p files/etc/uci-defaults
+
+cat > files/etc/uci-defaults/99-bl4nc7-led <<'EOF'
+#!/bin/sh
+
+# Green LED = Heartbeat
+uci -q delete system.green
+uci set system.green='led'
+uci set system.green.name='System'
+uci set system.green.sysfs='green:work'
+uci set system.green.trigger='heartbeat'
+
+# Blue LED = WiFi Client Activity
+uci -q delete system.blue
+uci set system.blue='led'
+uci set system.blue.name='WWAN'
+uci set system.blue.sysfs='blue:modem_5g'
+uci set system.blue.trigger='netdev'
+uci set system.blue.dev='wlan0'
+uci set system.blue.mode='link tx rx'
+
+# Red LED = Reserved
+uci -q delete system.red
+uci set system.red='led'
+uci set system.red.name='5G'
+uci set system.red.sysfs='red:modem_4g'
+uci set system.red.trigger='none'
+
+uci commit system
+
+exit 0
+EOF
+
+chmod +x files/etc/uci-defaults/99-bl4nc7-led
