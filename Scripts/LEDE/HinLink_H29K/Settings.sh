@@ -82,3 +82,7 @@ sed -i '/CPU usage/a\                <tr><td width="33%\"><%:Compile update%></t
 
 echo "========================="
 echo " DIY2 配置完成……"
+
+# Change LuCI title
+sed -i "s/OpenWrt/H29KLEDE-Bl4nc7OS/g" \
+package/base-files/files/etc/openwrt_release 2>/dev/null || true
