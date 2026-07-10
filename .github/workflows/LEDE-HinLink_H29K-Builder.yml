@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: LEDE-HinLink_H29K-Builder
+name: Bl4nc7OS-Phoenix-Builder
 
 on:
   repository_dispatch:
@@ -156,7 +156,7 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         # 生成版本标签
-        echo "release_tag=LEDE-HinLink_H29K-$(date +"%Y.%m.%d-%H%M%S")" >> $GITHUB_OUTPUT
+        echo "release_tag=Bl4nc7OS-Phoenix-$(date +"%Y.%m.%d-%H%M%S")" >> $GITHUB_OUTPUT
         
         # 生成发布说明
         cat <<EOF > release.txt
