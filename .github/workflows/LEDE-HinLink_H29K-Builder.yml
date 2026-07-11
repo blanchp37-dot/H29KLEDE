@@ -104,6 +104,23 @@ jobs:
 
         echo "===== Done ====="
 
+    - name: Debug Travelmate
+      run: |
+        cd lede
+         
+        echo "===== Travelmate files ====="
+        find . -iname "*travelmate*"
+       
+        echo "===== Search travelmate-service.sh ====="
+        find . -iname "travelmate-service.sh"
+
+        echo "===== Search init.d ====="
+        find . -path "*/travelmate"
+
+        echo "===== Package location ====="
+        grep -R "Package: travelmate" package feeds || true
+        grep -R "Package: luci-app-travelmate" package feeds || true
+
     - name: 加载自定义配置
       run: |
         [ -e "$CONFIG_FILE" ] && mv "$CONFIG_FILE" lede/.config
