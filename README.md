@@ -1,7 +1,5 @@
 🚀 LEDE R26.05.20 / LuCI openwrt-25.12 branch / Kernel 6.12.93
 
-📅 Compilation Time: 2026-07-08
-
 💻 Device Model: HinLink - H29K Board Ver 1.3
 
 🔗 Source code repository: https://github.com/coolsnowwolf/lede
