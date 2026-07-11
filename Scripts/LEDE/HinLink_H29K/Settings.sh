@@ -155,3 +155,19 @@ cat > package/base-files/files/etc/banner <<'EOF'
            by Bl4nc7
 
 EOF
+
+# ==========================================
+# Fix Travelmate LuCI menu (LEDE/OpenWrt 24.x)
+# ==========================================
+
+TRAVEL_JSON="feeds/luci/applications/luci-app-travelmate/root/usr/share/luci/menu.d/luci-app-travelmate.json"
+
+if [ -f "$TRAVEL_JSON" ]; then
+    echo "Patching Travelmate LuCI menu..."
+
+    sed -i '/travelmate-service\.sh/d' "$TRAVEL_JSON"
+
+    echo "===== Patched Travelmate JSON ====="
+    cat "$TRAVEL_JSON"
+    echo "=================================="
+fi
