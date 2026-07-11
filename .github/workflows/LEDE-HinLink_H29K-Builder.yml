@@ -80,9 +80,11 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH lede
         cd lede
 
-        echo "===================="
-        git log --oneline --decorate -20
-        echo "===================="
+        git checkout 03c6123bb
+
+        echo "=============================="
+        git log -1 --oneline
+        echo "=============================="
 
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
 
