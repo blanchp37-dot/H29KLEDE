@@ -115,19 +115,6 @@ jobs:
 
         echo "===== Done ====="
 
-    - name: Add rtw88 driver
-      run: |
-        cd lede
-
-        echo "===== Installing rtw88 package ====="
-
-        mkdir -p package/rtw88
-
-        cp -rf $GITHUB_WORKSPACE/Files/Drivers/* package/rtw88/
-
-        echo "===== rtw88 package ====="
-        ls -R package/rtw88
-
     - name: 加载自定义配置
       run: |
         [ -e "$CONFIG_FILE" ] && mv "$CONFIG_FILE" lede/.config
