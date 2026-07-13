@@ -163,6 +163,25 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: Check rtw88 config
+      run: |
+        cd lede
+
+        echo "===== RTW88 ====="
+        grep -i rtw .config || true
+
+        echo "===== 8821 ====="
+        grep -i 8821 .config || true
+
+        echo "===== BACKPORT ====="
+        grep -i backport .config || true
+
+        echo "===== Package exists ====="
+        find package -iname "*rtw88*"
+
+        echo "===== Makefile ====="
+        grep -n "KernelPackage" package/kernel/rtw88-backports/Makefile || true
+
     - name: 编译固件
       id: compile
       run: |
